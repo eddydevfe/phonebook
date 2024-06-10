@@ -4,6 +4,7 @@ const cors = require('cors')
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('dist'))
 
 let persons = [
     { 
@@ -97,7 +98,8 @@ app.post('/api/persons', (request, response) => {
     response.json(person)
 })
 
-const PORT = 3000; // 3001 is already being used, I'm not sure why since the other app is closed
+
+const PORT = process.env.PORT || 3000; // 3001 is already being used, I'm not sure why since the other app is closed
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
